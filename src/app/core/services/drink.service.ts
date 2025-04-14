@@ -7,25 +7,23 @@ import { Drink } from '../models/drink.interface';
   providedIn: 'root'
 })
 export class drinkService {
-  private basic_convocation_info_url = 'http://127.0.0.1:8000/get/convocation/basic'; // Url para obtener la informacion basica de las convocatorias
-  private detail_convocation_info_url = 'http://127.0.0.1:8000/get/convocation/detail';
-  private filteredData: Drink[] = [];
+  
+  private menu_list_url = '/menu';
+  private menu_list_get_name_url = '/menu/get';
+  private menu_list_add_url = 'http://menu/add';
 
   constructor(private http: HttpClient) { }
 
-  getConvocations(): Observable<Drink[]> {
-    return this.http.get<Drink[]>(this.basic_convocation_info_url);
+  getDrinks(): Observable<Drink[]> {
+    return this.http.get<Drink[]>(this.menu_list_url);
   }
 
-  getConvocationById(id: string | null): Observable<Drink[]> {
-    return this.http.get<Drink[]>(this.detail_convocation_info_url + '/' + id);
+  getDrinkByName(name: string | null): Observable<Drink> {
+    return this.http.get<Drink>(this.menu_list_get_name_url + '/' + name);
   }
 
-  setFilteredData(data: Drink[]): void {
-    this.filteredData = data;
+  createDrink(newDrink: Drink) {
+    return this.http.post(this.menu_list_add_url, newDrink)
   }
 
-  getFilteredData(): Drink[] {
-    return this.filteredData;
-  }
 }

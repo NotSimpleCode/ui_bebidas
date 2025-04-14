@@ -1,0 +1,29 @@
+<div class="menu-container">
+  <div class="header">
+    <h2>Menu List</h2>
+
+    <div class="actions">
+      <div>
+        <button (click)="add()">
+          <span class="add_button">Agregar</span>
+        </button>
+      </div>
+    </div>
+
+  <table class="menu-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tamaño</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let drink of menu">
+        <td>{{ drink.drink_name }}</td>
+        <td>{{ drink.drink_size }}</td>
+        <td>{{ drink.drink_price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
