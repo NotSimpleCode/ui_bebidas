@@ -27,16 +27,17 @@ export class menuAddComponent {
       this.drinkService.createDrinkMock(newDrink).subscribe({
         next: () => {
           alert('Drink added successfully!');
-          this.dialogRef.close(newDrink); // Cierra el modal y devuelve el nuevo drink
+          console.log('New drink added Final');
+          this.dialogRef.close(newDrink);
         },
         error: (err: any) => {
-          alert('Error adding drink: ' + err.message);
+          alert('Error adding drink');
           console.error('Error adding drink:', err);
         }
       });
-    } else{
+    } else {
       alert('Please fill in all fields correctly.');
-    } 
+    }
   }
 
 }
