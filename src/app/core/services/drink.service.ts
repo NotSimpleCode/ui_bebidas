@@ -26,4 +26,13 @@ export class drinkService {
     return this.http.post(this.menu_list_add_url, newDrink)
   }
 
+  createDrinkMock(newDrink: Drink): Observable<Drink> {
+    return new Observable<Drink>((observer) => {
+      setTimeout(() => {
+        observer.next(newDrink);
+        observer.complete();
+      }, 1000); // Simulate a delay
+    });
+  }
+
 }

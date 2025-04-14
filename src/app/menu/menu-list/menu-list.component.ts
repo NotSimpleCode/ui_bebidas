@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { Drink } from '../../core/models/drink.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { menuAddComponent } from '../add/menu.add.component';
+import { drinkService } from '../../core/services/drink.service';
+
 
 @Component({
   selector: 'app-menu-list',
@@ -13,7 +16,7 @@ import { Drink } from '../../core/models/drink.interface';
 
 export class menuListComponent implements OnInit{
 
-  constructor(private router: Router) {
+  constructor( private drinkService: drinkService, private dialog: MatDialog) {
   }
 
   menu: Drink[] = [];
@@ -31,15 +34,25 @@ export class menuListComponent implements OnInit{
     ];
   }
 
-  add() {
-    this.menu.push({ drink_name: 'Fanta', drink_size: '1 L', drink_price: 4000 });
-    //this.router.navigate(['add']);
-    this.router.navigateByUrl('menu/add');
-  }
-  /**
-  getUrlData() {
-    this.menusService.getmenus().subscribe(data => {
-      this.menus = data;
+  openAddModal() {
+    const dialogRef = this.dialog.open(menuAddComponent, {
+      width: '400px',
+      disableClose: false
     });
-  } */
+
+    dialogRef.afterClosed().subscribe((newDrink: Drink | null) => {
+      if (newDrink) {
+        this.menu.push(newDrink); // Actualiza la lista con el nuevo elemento
+        console.log('New drink added:', newDrink);
+      } else {
+        console.log('Modal closed without adding a drink.');
+      }
+    });
+  }
+
+  getUrlData() {
+    this.drinkService.getDrinks().subscribe(data => {
+      this.menu = data;
+    });
+  } 
 }

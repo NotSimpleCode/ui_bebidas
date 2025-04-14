@@ -4,12 +4,12 @@
         <input type="text" id="drink_name" name="drink_name" ngModel required />
     </div>
     <div>
-        <label for="drink_size">Type:</label>
+        <label for="drink_size">Size:</label>
         <input type="text" id="drink_size" name="drink_size" ngModel required />
     </div>
     <div>
         <label for="drink_price">Price:</label>
         <input type="number" id="drink_price" name="drink_price" ngModel required />
     </div>
-    <button type="submit" [disabled]="drinkForm.invalid">Add Drink</button>
+    <button type="submit">Create</button>
 </form>
