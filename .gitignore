@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+.mypy_cache/
+.pytest_cache/
+
+venv/
+env/
+ENV/
+.env/
+.coverage
+.vscode/
+*.txt
+*.md
+!requirements.txt
+!README.md

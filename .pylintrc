@@ -1,0 +1,11 @@
+[MESSAGES CONTROL]
+disable=
+    C0115,  # missing-class-docstring
+    C0116,  # missing-function-docstring
+
+enable=
+    E1101,  # no-member
+    R0913,  # too-many-arguments
+
+[FORMAT]
+max-line-length=88
