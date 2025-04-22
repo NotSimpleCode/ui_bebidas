@@ -8,9 +8,7 @@ import { Drink } from '../models/drink.interface';
 })
 export class drinkService {
   
-  private menu_list_url = '/menu';
-  private menu_list_get_name_url = '/menu/get';
-  private menu_list_add_url = 'http://menu/add';
+  private menu_list_url = 'https://api-bebidas.onrender.com/menu';
 
   constructor(private http: HttpClient) { }
 
@@ -19,11 +17,11 @@ export class drinkService {
   }
 
   getDrinkByName(name: string | null): Observable<Drink> {
-    return this.http.get<Drink>(this.menu_list_get_name_url + '/' + name);
+    return this.http.get<Drink>(this.menu_list_url + '/' + name);
   }
 
   createDrink(newDrink: Drink) {
-    return this.http.post(this.menu_list_add_url, newDrink)
+    return this.http.post(this.menu_list_url, newDrink)
   }
 
   createDrinkMock(newDrink: Drink): Observable<Drink> {

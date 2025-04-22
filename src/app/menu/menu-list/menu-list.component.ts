@@ -22,15 +22,16 @@ export class menuListComponent implements OnInit{
   menu: Drink[] = [];
 
   ngOnInit(): void {
-    this.getStaticData();
+    this.getUrlData();
+    // this.getStaticData(); // Uncomment this line to use static data instead of API data
   }
 
 
   getStaticData() {
     this.menu = [
-      { drink_name: 'Coca Cola', drink_size: '1 L', drink_price: 4500 },
-      { drink_name: 'Pepsi', drink_size: '500 ml', drink_price: 2500 },
-      { drink_name: 'Sprite', drink_size: '1.5 L', drink_price: 5000 }
+      { name: 'Coca Cola', size: '1 L', price: 4500 },
+      { name: 'Pepsi', size: '500 ml', price: 2500 },
+      { name: 'Sprite', size: '1.5 L', price: 5000 }
     ];
   }
 
@@ -42,8 +43,8 @@ export class menuListComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe((newDrink: Drink | null) => {
       if (newDrink) {
-        this.menu.push(newDrink); // Actualiza la lista con el nuevo elemento
         console.log('New drink added:', newDrink);
+        this.menu.push(newDrink)
       } else {
         console.log('Modal closed without adding a drink.');
       }

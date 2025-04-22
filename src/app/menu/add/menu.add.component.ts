@@ -24,7 +24,7 @@ export class menuAddComponent {
   onSubmit(drinkForm: NgForm) {
     if (drinkForm.valid) {
       const newDrink: Drink = drinkForm.value;
-      this.drinkService.createDrinkMock(newDrink).subscribe({
+      this.drinkService.createDrink(newDrink).subscribe({
         next: () => {
           alert('Drink added successfully!');
           console.log('New drink added Final');
