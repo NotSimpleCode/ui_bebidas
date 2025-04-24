@@ -1,8 +1,8 @@
 import { Routes } from "@angular/router";
-import { menuListComponent } from "./menu-list/menu-list.component";
-import { menuAddComponent } from "./add/menu.add.component";
+import { MenuListComponent } from "./menu-list/menu-list.component";
+import { MenuAddComponent } from "./add/menu.add.component";
 
 export const MENU_ROUTES: Routes = [    
-    { path: '', component:  menuListComponent}
-    ,{ path: 'add', component:  menuAddComponent}
+    { path: '', component:  MenuListComponent}
+    ,{ path: 'add', component:  MenuAddComponent}
 ];

@@ -1,16 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { menuAddComponent } from './menu.add.component';
+import { MenuAddComponent } from './menu.add.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { drinkService } from '../../core/services/drink.service';
-import { of, throwError } from 'rxjs';
-import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 
-describe('menuAddComponent', () => {
-  let component: menuAddComponent;
-  let fixture: ComponentFixture<menuAddComponent>;
-  let mockDialogRef: jasmine.SpyObj<MatDialogRef<menuAddComponent>>;
+describe('MenuAddComponent', () => {
+  let component: MenuAddComponent;
+  let fixture: ComponentFixture<MenuAddComponent>;
+  let mockDialogRef: jasmine.SpyObj<MatDialogRef<MenuAddComponent>>;
   let mockDrinkService: jasmine.SpyObj<drinkService>;
 
   beforeEach(async () => {
@@ -18,14 +16,14 @@ describe('menuAddComponent', () => {
     mockDrinkService = jasmine.createSpyObj('drinkService', ['createDrinkMock']);
   
     await TestBed.configureTestingModule({
-      imports: [FormsModule, menuAddComponent],
+      imports: [FormsModule, MenuAddComponent],
       providers: [
         { provide: MatDialogRef, useValue: mockDialogRef },
         provideHttpClient()
       ]
     }).compileComponents();
   
-    fixture = TestBed.createComponent(menuAddComponent);
+    fixture = TestBed.createComponent(MenuAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

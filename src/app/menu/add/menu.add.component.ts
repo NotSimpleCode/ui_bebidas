@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Drink } from '../../core/models/drink.interface';
 import { drinkService } from '../../core/services/drink.service';
@@ -15,10 +14,10 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./menu-add.component.css']
 })
 
-export class menuAddComponent {
+export class MenuAddComponent {
   constructor(
-    private dialogRef: MatDialogRef<menuAddComponent>,
-    private drinkService: drinkService
+    private readonly dialogRef: MatDialogRef<MenuAddComponent>,
+    private readonly drinkService: drinkService
   ) {}
 
   onSubmit(drinkForm: NgForm) {
@@ -33,10 +32,12 @@ export class menuAddComponent {
         error: (err: any) => {
           alert('Error adding drink');
           console.error('Error adding drink:', err);
+          this.dialogRef.close(null);
         }
       });
     } else {
       alert('Please fill in all fields correctly.');
+      
     }
   }
 

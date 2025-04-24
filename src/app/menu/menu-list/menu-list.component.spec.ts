@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { menuListComponent } from './menu-list.component';
+import { MenuListComponent } from './menu-list.component';
 import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
 import { Drink } from '../../core/models/drink.interface';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 
-describe('menuListComponent', () => {
-  let component: menuListComponent;
-  let fixture: ComponentFixture<menuListComponent>;
+describe('MenuListComponent', () => {
+  let component: MenuListComponent;
+  let fixture: ComponentFixture<MenuListComponent>;
   let mockDialog: jasmine.SpyObj<MatDialog>;
 
   beforeEach(async () => {
     mockDialog = jasmine.createSpyObj('MatDialog', ['open']);
 
     await TestBed.configureTestingModule({
-      imports: [menuListComponent],
+      imports: [MenuListComponent],
       providers: [
         { provide: MatDialog, useValue: mockDialog },
         provideRouter([]), 
@@ -23,7 +23,7 @@ describe('menuListComponent', () => {
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(menuListComponent);
+    fixture = TestBed.createComponent(MenuListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -35,11 +35,11 @@ describe('menuListComponent', () => {
   it('should initialize with static data', () => {
     component.getStaticData();
     expect(component.menu.length).toBe(3);
-    expect(component.menu[0].drink_name).toBe('Coca Cola');
+    expect(component.menu[0].name).toBe('Coca Cola');
   });
 
   it('should open the add modal and add a new drink', () => {
-    const newDrink: Drink = { drink_name: 'Fanta', drink_size: '1 L', drink_price: 4000 };
+    const newDrink: Drink = { name: 'Fanta', size: '1 L', price: '4000' };
     mockDialog.open.and.returnValue({
       afterClosed: () => of(newDrink)
     } as any);
