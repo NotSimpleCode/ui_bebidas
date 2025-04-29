@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Drink } from '../../core/models/drink.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { MenuAddComponent } from '../add/menu.add.component';
-import { drinkService } from '../../core/services/drink.service';
+import { DrinkService } from '../../core/services/drink.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { drinkService } from '../../core/services/drink.service';
 
 export class MenuListComponent implements OnInit{
 
-  constructor( private readonly drinkService: drinkService, private readonly dialog: MatDialog) {
+  constructor( private readonly DrinkService: DrinkService, private readonly dialog: MatDialog) {
   }
 
   menu: Drink[] = [];
@@ -52,7 +52,7 @@ export class MenuListComponent implements OnInit{
   }
 
   getUrlData() {
-    this.drinkService.getDrinks().subscribe(data => {
+    this.DrinkService.getDrinks().subscribe(data => {
       this.menu = data;
     });
   } 

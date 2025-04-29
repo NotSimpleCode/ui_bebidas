@@ -6,11 +6,11 @@ import { Drink } from '../models/drink.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class drinkService {
+export class DrinkService {
   
-  private menu_list_url = 'https://api-bebidas.onrender.com/menu';
+  private readonly menu_list_url = 'https://api-bebidas.onrender.com/menu';
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   getDrinks(): Observable<Drink[]> {
     return this.http.get<Drink[]>(this.menu_list_url);
